@@ -4,6 +4,17 @@ import 'package:holion_common/stringExtensions.dart';
 import 'package:humio/humio.dart';
 
 void main() {
+  test('Humio Test if initialized', () {
+    var humio = Humio.defaultImplementation('your-humio-ingest-token');
+    HumioManager humioManager = HumioManager();
+    expect(humioManager.isInitialized(), false);
+    if (!humioManager.isInitialized()) humioManager.initialize(humio);
+    expect(humioManager.isInitialized(), true);
+
+    HumioManager humioManager2 = HumioManager();
+    expect(humioManager2.isInitialized(), true);
+  });
+
   group('ReplaceExtension test', () {
     test('Example', () {
       String sut = 'Test if {{words}} can be replaced with cookies';
@@ -41,35 +52,5 @@ void main() {
       sut = sut.Replace(replaceValues);
       expect(sut, 'Test ');
     });
-  });
-
-  test('Humio Example', () {
-    var humio = Humio.defaultImplementation('your-humio-ingest-token');
-    HumioManager humioManager = HumioManager();
-    humioManager.initialize(humio);
-
-    var sut = 'Test {{test}}';
-    var replaceValues = {'map': '30'};
-    sut = sut.Replace(replaceValues);
-    expect(sut, 'Test ');
-  });
-
-  test('Humio Test if initialized', () {
-    HumioManager humioManager = HumioManager();
-    bool isInitialised = humioManager.isInitialized();
-    expect(isInitialised, false);
-    var humio = Humio.defaultImplementation('your-humio-ingest-token');
-    humioManager.initialize(humio);
-    isInitialised = humioManager.isInitialized();
-    expect(isInitialised, true);
-  });
-
-  test('Humio Test if initialized', () {
-    var humio = Humio.defaultImplementation('your-humio-ingest-token');
-    HumioManager humioManager = HumioManager();
-    var isInitialised = humioManager.isInitialized();
-    if (!humioManager.isInitialized()) humioManager.initialize(humio);
-    isInitialised = humioManager.isInitialized();
-    expect(isInitialised, true);
   });
 }
