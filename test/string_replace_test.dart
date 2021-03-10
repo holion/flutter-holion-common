@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:holion_common/humio/humio_manager.dart';
-import 'package:holion_common/text/string_replace.dart';
+import 'package:holion_common/humioManager.dart';
+import 'package:holion_common/stringExtensions.dart';
 import 'package:humio/humio.dart';
 
 void main() {
@@ -52,5 +52,24 @@ void main() {
     var replaceValues = {'map': '30'};
     sut = sut.Replace(replaceValues);
     expect(sut, 'Test ');
+  });
+
+  test('Humio Test if initialized', () {
+    HumioManager humioManager = HumioManager();
+    bool isInitialised = humioManager.isInitialized();
+    expect(isInitialised, false);
+    var humio = Humio.defaultImplementation('your-humio-ingest-token');
+    humioManager.initialize(humio);
+    isInitialised = humioManager.isInitialized();
+    expect(isInitialised, true);
+  });
+
+  test('Humio Test if initialized', () {
+    var humio = Humio.defaultImplementation('your-humio-ingest-token');
+    HumioManager humioManager = HumioManager();
+    var isInitialised = humioManager.isInitialized();
+    if (!humioManager.isInitialized()) humioManager.initialize(humio);
+    isInitialised = humioManager.isInitialized();
+    expect(isInitialised, true);
   });
 }

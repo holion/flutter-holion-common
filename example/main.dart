@@ -1,6 +1,6 @@
-import 'package:holion_common/text/string_replace.dart';
-import 'package:holion_common/humio/humio_manager.dart';
 import 'package:humio/humio.dart';
+import 'package:holion_common/humioManager.dart';
+import 'package:holion_common/stringExtensions.dart';
 
 main() {
   var humio = Humio.defaultImplementation('your-humio-ingest-token');

@@ -1,5 +1,5 @@
-name: holion_common
-description: A Flutter package containing miscellaneous functionality 
+name: holion_common_exmple
+description: Demonstrates how to use the holion_common's miscellaneous functionality 
 version: 0.0.1
 homepage: https://holion.dk/
 
@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  holion_common:
+    path: ../
   humio: ^0.1.0
 
 dev_dependencies:
