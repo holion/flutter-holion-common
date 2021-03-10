@@ -2,6 +2,7 @@ name: holion_common
 description: A Flutter package containing miscellaneous functionality 
 version: 0.0.1
 homepage: https://holion.dk/
+repository: https://github.com/holion/flutter-holion-common
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
